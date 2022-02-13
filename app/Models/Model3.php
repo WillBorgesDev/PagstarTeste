@@ -10,6 +10,12 @@ class Model3 extends Model
     use HasFactory;
     protected $fillable = [
         'type',
+        'carteira_id',
         'value'
     ];
+
+    public function model2()
+    {
+        return $this->belongsTo(Model2::class);
+    }
 }

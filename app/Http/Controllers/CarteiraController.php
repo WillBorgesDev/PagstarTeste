@@ -15,7 +15,14 @@ class CarteiraController extends Controller
     public function index()
     {
         //
-        $carteiras = Model2::all();
+        $id_usuario = request('id_usuario');
+      
+
+        if($id_usuario):
+            $carteiras = Model2::where([
+                'id_usuario']);
+        endif;
+
         return view('carteiras.index', compact('carteiras'));
     }
 
@@ -27,6 +34,9 @@ class CarteiraController extends Controller
     public function create()
     {
         //
+
+        return view('carteiras.create', ['action'=>route('carteira.store'), 'method'=>'post']);
+        
     }
 
     /**
@@ -38,6 +48,17 @@ class CarteiraController extends Controller
     public function store(Request $request)
     {
         //
+        $url = $request->get('redirect_to', route('usuario.index'));
+        if (! $request->has('cancel') ){
+            $dados = $request->all();
+            Model2::create($dados);
+            $request->session()->flash('message', 'Carteira cadastrado com sucesso');
+        }
+        else
+        { 
+            $request->session()->flash('message', 'Operação cancelada pelo usuário'); 
+        }
+        return redirect()->to($url);
     }
 
     /**

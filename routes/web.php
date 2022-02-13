@@ -18,15 +18,19 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/usuario', [UsuarioController::class, 'index']);
+Route::get('/usuario', [UsuarioController::class, 'store']);
 Route::get('/carteira', [CarteiraController::class, 'index']);
+Route::post('/carteira', [CarteiraController::class, 'store']);
+
+Route::resource('/usuario', 'UsuarioController')->except([
+    'show', 'edit'
+]);
 
 Route::resource('/carteira', 'CarteiraController')->except([
     'show', 'edit'
 ]);
 
-Route::resource('/usuario', 'UsuarioController')->except([
-    'show', 'edit'
-]);
+
 
 
 

@@ -28,6 +28,7 @@ class UsuarioController extends Controller
     public function create()
     {
         //
+        return view('usuarios.create', ['action'=>route('usuario.store'), 'method'=>'post']);
     }
 
     /**
@@ -39,6 +40,18 @@ class UsuarioController extends Controller
     public function store(Request $request)
     {
         //
+
+        $url = $request->get('redirect_to', route('usuario.index'));
+        if (! $request->has('cancel') ){
+            $dados = $request->all();
+            Model1::create($dados);
+            $request->session()->flash('message', 'Usuario cadastrado com sucesso');
+        }
+        else
+        { 
+            $request->session()->flash('message', 'Operação cancelada pelo usuário'); 
+        }
+        return redirect()->to($url);
     }
 
     /**

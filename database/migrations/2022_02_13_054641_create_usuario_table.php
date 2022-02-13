@@ -13,11 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('model3s', function (Blueprint $table) {
+        Schema::create('usuario', function (Blueprint $table) {
             $table->id();
-            $table->foreign('wallet_id')->references('id')->on('model2s');
-            $table->string('type',);
-            $table->float('value',);
             $table->timestamps();
         });
     }
@@ -29,6 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('model3s');
+        Schema::dropIfExists('usuario');
     }
 };

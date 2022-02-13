@@ -12,6 +12,15 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
     </head>
     <body>
+
+        @if(Session::has('message'))
+            <div class="alert alert-sucess alert-dismissible show" role="alert">
+                    <strong> {!! session()->get('message') !!}</strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                    </button>
+            </div>
+        @endif
         <div id="app">
             <nav class="navbar navbar-default navbar-static-top">
                 <div class="navbar-header">

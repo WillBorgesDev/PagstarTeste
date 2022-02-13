@@ -10,7 +10,10 @@ class Model1 extends Model
     use HasFactory;
     protected $fillable = [
         'nome',
-        'carteira',
-        'saldo'
     ]; 
+
+    public function model2()
+    {
+        return $this->hasOne(Model2::class);
+    }
 }

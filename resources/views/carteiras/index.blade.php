@@ -6,7 +6,7 @@
             <h3>Carteira</h3>
         </div>
         <div class="col-md-8">
-            <a href="" class="btn btn-primary">Criar Carteira</a>
+            <a href="{{route('carteira.create')}}" class="btn btn-primary">Criar Carteira</a>
         </div>
     </div>
     <div class="row">
@@ -14,14 +14,16 @@
             <thead>
                 <tr>
                     <th>Id</th>
-                    <th>Balance</th>
+                    <th>Usuario</th>
+                    <th>Saldo </th>
                 </tr>
             </thead>
             <tbody>
             @foreach($carteiras as $careira)
                 <tr>
-                    <td>{{ $wallet_id->id }}</td>
-                    <td>{{ $balance->tipo }}</td>
+                    <td>{{ $careira->id          }}</td>
+                    <td>{{ $careira= model1::find(1)->model2; }}</td>
+                    <td>{{ $careira->saldo       }}</td>
                         <ul class="list-inline">
                             <li>
                             <a href="">Editar</a>
