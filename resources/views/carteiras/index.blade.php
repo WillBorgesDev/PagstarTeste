@@ -22,7 +22,7 @@
             @foreach($carteiras as $careira)
                 <tr>
                     <td>{{ $careira->id          }}</td>
-                    <td>{{ $careira= model1::find(1)->model2; }}</td>
+                    <td>{{ $careira->id_usuaurio }}</td>
                     <td>{{ $careira->saldo       }}</td>
                         <ul class="list-inline">
                             <li>

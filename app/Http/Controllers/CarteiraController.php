@@ -21,6 +21,8 @@ class CarteiraController extends Controller
         if($id_usuario):
             $carteiras = Model2::where([
                 'id_usuario']);
+            else:
+                $carteiras = Model2::all();
         endif;
 
         return view('carteiras.index', compact('carteiras'));
