@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Model1;
+use App\Models\Model2;
 use Illuminate\Http\Request;
 
 class UsuarioController extends Controller
@@ -83,9 +84,19 @@ class UsuarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Model1 $usuario, Request $request)
     {
-        //
+        if (! $request->has('cancel') ){
+            $usuario->nome = $request->input('nome');
+            
+            $usuario->update();
+            \Session::flash('message', 'Usuario atualizado com sucesso !');
+        }
+        else
+        { 
+            $request->session()->flash('message', 'Operação cancelada pelo usuário'); 
+        }
+        return redirect()->route('usuario.index'); 
     }
 
     /**
@@ -94,8 +105,18 @@ class UsuarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Model1 $usuario, Model2 $carteira, Request $request)
     {
         //
+        if (! $request->has('cancel') ){
+            $usuario->delete();
+            $carteira->delete();
+            \Session::flash('message', 'Usuario excluído com sucesso !');
+        }
+        else
+        { 
+            $request->session()->flash('message', 'Operação cancelada pelo usuário'); 
+        }
+        return redirect()->route('usuario.index'); 
     }
 }

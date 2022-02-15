@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Model1;
 use App\Models\Model2;
+use App\Http\Controllers\UsuarioController;
 use Illuminate\Http\Request;
 
 class CarteiraController extends Controller
@@ -14,16 +16,14 @@ class CarteiraController extends Controller
      */
     public function index()
     {
-        //
         $id_usuario = request('id_usuario');
       
 
-        if($id_usuario):
-            $carteiras = Model2::where([
-                'id_usuario']);
-            else:
-                $carteiras = Model2::all();
+        if($id_usuario == null):
+            
         endif;
+        $carteiras = Model2::all();
+        
 
         return view('carteiras.index', compact('carteiras'));
     }
@@ -49,10 +49,14 @@ class CarteiraController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        $url = $request->get('redirect_to', route('usuario.index'));
+        $url = $request->get('redirect_to', route('carteira.index'));
         if (! $request->has('cancel') ){
+
             $dados = $request->all();
+            $this->validate($request, [
+                'id_usuario' => 'exists:model1s,id'
+                ]);
+            
             Model2::create($dados);
             $request->session()->flash('message', 'Carteira cadastrado com sucesso');
         }
@@ -92,9 +96,23 @@ class CarteiraController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Model2 $carteira,Request $request)
     {
         //
+        if (! $request->has('cancel') ){
+
+            $carteira->saldo = $carteira->saldo + $request->input('saldo');
+    
+            
+            $carteira->update();
+            \Session::flash('message', 'Transação efetuada com sucesso!');
+        }
+        else
+        { 
+            $request->session()->flash('message', 'Operação cancelada pelo usuário'); 
+        }
+        return redirect()->route('carteira.index'); 
+
     }
 
     /**
@@ -103,8 +121,17 @@ class CarteiraController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Model2 $carteira, Request $request)
     {
         //
+        if (! $request->has('cancel') ){
+            $carteira->delete();
+            \Session::flash('message', 'Usuario excluído com sucesso !');
+        }
+        else
+        { 
+            $request->session()->flash('message', 'Operação cancelada pelo usuário'); 
+        }
+        return redirect()->route('carteira.index'); 
     }
 }

@@ -32,15 +32,13 @@
                 <tr>
                     <td>{{ $usuario->id   }}</td>
                     <td>{{ $usuario->nome }}</td>
-                    
-                    <!-- <td>{{ $usuario->saldo }}</td> -->
                     <td>
                         <ul class="list-inline">
                             <li>
-                            <a href="">Editar</a>
+                            <a href="{{route('usuario.edit', ['usuario' => $usuario])}}">Editar</a>
                             </li>
                             <li>
-                            <a href="">Deletar</a>
+                            <a href="{{route('usuario.delete', ['usuario' => $usuario])}}">Deletar</a>
                             </li>
                            
                         </ul>

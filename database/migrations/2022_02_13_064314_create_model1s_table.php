@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('model1s', function (Blueprint $table) {
             $table->id();
-            $table->string('nome');
+            $table->string('nome')->nullable();
             // $table->TIN('carteira', false);
             $table->timestamps();
             $table->index('nome');

@@ -19,17 +19,18 @@
                 </tr>
             </thead>
             <tbody>
-            @foreach($carteiras as $careira)
+            @foreach($carteiras as $carteira)
                 <tr>
-                    <td>{{ $careira->id          }}</td>
-                    <td>{{ $careira->id_usuaurio }}</td>
-                    <td>{{ $careira->saldo       }}</td>
+                    <td>{{ $carteira->id          }}</td>
+                    <td>{{ $carteira->id_usuario }}</td>
+                    <td>{{ $carteira->saldo       }}</td>
+                    <td>
                         <ul class="list-inline">
                             <li>
-                            <a href="">Editar</a>
+                            <a href="{{route('carteira.movement', ['carteira' => $carteira])}}">Depositar</a>
                             </li>
                             <li>
-                            <a href="">Deletar</a>
+                            <a href="{{route('carteira.delete', ['carteira' => $carteira])}}">Deletar</a>
                             </li>
                         </ul>
                     </td>

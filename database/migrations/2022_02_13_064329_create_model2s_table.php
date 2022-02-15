@@ -16,11 +16,10 @@ return new class extends Migration
         Schema::create('model2s', function (Blueprint $table) {
             $table->id();
             // $table->integer('model1_id')->unsigned();
-            $table->foreignId('model1_id')->constrained('model1s');
-            $table->string('carteira',50);
-            $table->float('saldo', 0.0)->change();
+            $table->foreignId('id_usuario')->constrained('model1s');
+            $table->float('saldo', 0.0);
             $table->timestamps();
-            $table->index('carteira','saldo');
+            
             
         });
     }
