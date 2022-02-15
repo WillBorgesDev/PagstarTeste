@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Model1;
-use App\Models\Model2;
+use App\Models\Usuario;
+use App\Models\Carteira;
 use App\Http\Controllers\UsuarioController;
 use Illuminate\Http\Request;
 
@@ -16,13 +16,8 @@ class CarteiraController extends Controller
      */
     public function index()
     {
-        $id_usuario = request('id_usuario');
-      
-
-        if($id_usuario == null):
-            
-        endif;
-        $carteiras = Model2::all();
+        
+        $carteiras = Carteira::all();
         
 
         return view('carteiras.index', compact('carteiras'));
@@ -54,10 +49,10 @@ class CarteiraController extends Controller
 
             $dados = $request->all();
             $this->validate($request, [
-                'id_usuario' => 'exists:model1s,id'
+                'id_usuario' => 'exists:usuarios,id'
                 ]);
             
-            Model2::create($dados);
+            Carteira::create($dados);
             $request->session()->flash('message', 'Carteira cadastrado com sucesso');
         }
         else
@@ -96,7 +91,7 @@ class CarteiraController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Model2 $carteira,Request $request)
+    public function update(Carteira $carteira,Request $request)
     {
         //
         if (! $request->has('cancel') ){
@@ -121,7 +116,7 @@ class CarteiraController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Model2 $carteira, Request $request)
+    public function destroy(Carteira $carteira, Request $request)
     {
         //
         if (! $request->has('cancel') ){

@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Model1 extends Model
+class Usuario extends Model
 {
     use HasFactory;
     protected $fillable = [
@@ -14,6 +14,6 @@ class Model1 extends Model
 
     public function model2()
     {
-        return $this->hasOne(Model2::class);
+        return $this->hasOne(Carteira::class);
     }
 }

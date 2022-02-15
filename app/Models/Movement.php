@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Model3 extends Model
+class Movement extends Model
 {
     use HasFactory;
     protected $fillable = [
@@ -14,8 +14,8 @@ class Model3 extends Model
         'value'
     ];
 
-    public function model2()
+    public function carteira()
     {
-        return $this->belongsTo(Model2::class);
+        return $this->belongsTo(Carteira::class);
     }
 }

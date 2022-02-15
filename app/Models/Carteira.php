@@ -5,17 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Model2 extends Model
+class Carteira extends Model
 {
     use HasFactory;
     protected $fillable = ['id_usuario','saldo'] ;
 
-    public function model1()
+    public function carteira()
     {
-        return $this->belongsTo(Model1::class);
+        return $this->belongsTo(Usuario::class);
     }
-    public function model3()
+    public function movement()
     {
-        return $this->hasOne(Model3::class);
+        return $this->hasOne(Carteira::class);
     }
 }

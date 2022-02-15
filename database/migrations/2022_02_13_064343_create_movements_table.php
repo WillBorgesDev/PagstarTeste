@@ -13,14 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('model2s', function (Blueprint $table) {
+        Schema::create('movements', function (Blueprint $table) {
             $table->id();
-            // $table->integer('model1_id')->unsigned();
-            $table->foreignId('id_usuario')->constrained('model1s');
-            $table->float('saldo', 0.0);
+            $table->string('tipo');
+            $table->foreignId('carteira_id')->constrained('carteiras');
+            $table->float('valor');
             $table->timestamps();
-            
-            
         });
     }
 
@@ -31,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('model2s');
+        Schema::dropIfExists('movements');
     }
 };

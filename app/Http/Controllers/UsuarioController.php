@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Model1;
-use App\Models\Model2;
+use App\Models\Usuario;
+use App\Models\Carteira;
 use Illuminate\Http\Request;
 
 class UsuarioController extends Controller
@@ -16,7 +16,7 @@ class UsuarioController extends Controller
     public function index()
     {
         //
-        $usuarios = Model1::all();
+        $usuarios = Usuario::all();
         return view('usuarios.index', compact('usuarios'));
         
     }
@@ -45,7 +45,7 @@ class UsuarioController extends Controller
         $url = $request->get('redirect_to', route('usuario.index'));
         if (! $request->has('cancel') ){
             $dados = $request->all();
-            Model1::create($dados);
+            Usuario::create($dados);
             $request->session()->flash('message', 'Usuario cadastrado com sucesso');
         }
         else
@@ -84,7 +84,7 @@ class UsuarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Model1 $usuario, Request $request)
+    public function update(Usuario $usuario, Request $request)
     {
         if (! $request->has('cancel') ){
             $usuario->nome = $request->input('nome');
@@ -105,12 +105,12 @@ class UsuarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Model1 $usuario, Model2 $carteira, Request $request)
+    public function destroy(Usuario $usuario, Carteira $carteira, Request $request)
     {
         //
         if (! $request->has('cancel') ){
             $usuario->delete();
-            $carteira->delete();
+            // $carteira->delete();
             \Session::flash('message', 'Usuario excluído com sucesso !');
         }
         else

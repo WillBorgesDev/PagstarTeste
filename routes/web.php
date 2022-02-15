@@ -33,22 +33,22 @@ Route::resource('/carteira', 'CarteiraController')->except([
 ]);
 
 //Delete
-Route::get('/usuario/delete/{usuario}', function (App\Models\Model1 $usuario) {
+Route::get('/usuario/delete/{usuario}', function (App\Models\Usuario $usuario) {
     return view('usuarios.destroy', ['user' => $usuario]);
 })->name('usuario.delete');
 
-Route::get('/carteira/delete/{carteira}', function (App\Models\Model2 $carteira) {
+Route::get('/carteira/delete/{carteira}', function (App\Models\Carteira $carteira) {
     return view('carteiras.destroy', ['wallet' => $carteira]);
 })->name('carteira.delete');
 
 //Update
 
 
-Route::get('/usuario/edit/{usuario}', function (App\Models\Model1 $usuario) {
+Route::get('/usuario/edit/{usuario}', function (App\Models\Usuario $usuario) {
     return view('usuarios.edit', ['user' => $usuario]);
 })->name('usuario.edit');
 
-Route::get('/carteira/movement/{carteira}', function (App\Models\Model2 $carteira) {
+Route::get('/carteira/movement/{carteira}', function (App\Models\Carteira $carteira) {
     return view('carteiras.movement', ['wallet' => $carteira]);
 })->name('carteira.movement');
 
