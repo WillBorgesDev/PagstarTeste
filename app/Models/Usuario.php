@@ -12,7 +12,7 @@ class Usuario extends Model
         'nome',
     ]; 
 
-    public function model2()
+    public function carteira()
     {
         return $this->hasOne(Carteira::class);
     }

@@ -49,7 +49,7 @@ class CarteiraController extends Controller
 
             $dados = $request->all();
             $this->validate($request, [
-                'id_usuario' => 'exists:usuarios,id'
+                'usuario_id' => 'exists:usuarios,id'
                 ]);
             
             Carteira::create($dados);

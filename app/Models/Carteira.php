@@ -8,9 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Carteira extends Model
 {
     use HasFactory;
-    protected $fillable = ['id_usuario','saldo'] ;
+    protected $fillable = ['usuario_id','saldo'] ;
 
-    public function carteira()
+    public function usuario()
     {
         return $this->belongsTo(Usuario::class);
     }

@@ -8,8 +8,8 @@
     @method('DELETE')
     <input type="hidden" id="redirect_to" name="redirect_to" value={{URL::previous()}}>
     <div>
-    <label for="id_usuario">ID USUARIO</label>
-    <input type="text" id="id_usuario" name="id_usuario" value="{{$wallet->id_usuario}}" disabled>
+    <label for="usuario_id">ID USUARIO</label>
+    <input type="text" id="usuario_id" name="usuario_id" value="{{$wallet->usuario_id}}" disabled>
     </div>
     
     <div class="alert alert-danger" role="alert">Esta operação não poderá ser desfeita! Confirma a exclusão do usuario?</div>

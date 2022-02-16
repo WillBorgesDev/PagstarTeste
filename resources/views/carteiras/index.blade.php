@@ -22,7 +22,7 @@
             @foreach($carteiras as $carteira)
                 <tr>
                     <td>{{ $carteira->id          }}</td>
-                    <td>{{ $carteira->id_usuario }}</td>
+                    <td>{{ $carteira->usuario_id }}</td>
                     <td>{{ $carteira->saldo       }}</td>
                     <td>
                         <ul class="list-inline">

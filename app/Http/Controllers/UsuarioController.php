@@ -105,12 +105,15 @@ class UsuarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Usuario $usuario, Carteira $carteira, Request $request)
+    public function destroy(Usuario $usuario, Request $request)
     {
         //
         if (! $request->has('cancel') ){
+            
+            $usuario->carteira()->delete();
             $usuario->delete();
-            // $carteira->delete();
+            
+            
             \Session::flash('message', 'Usuario excluído com sucesso !');
         }
         else

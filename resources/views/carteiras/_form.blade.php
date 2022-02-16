@@ -2,8 +2,8 @@
     @csrf
     <input type="hidden" id="redirect_to" name="redirect_to" value={{URL::previous()}}>
     <div>
-        <label for="id_usuario">Id Usuario</label>
-        <input type="text" id="id_usuario" name="id_usuario">
+        <label for="usuario_id">Id Usuario</label>
+        <input type="text" id="usuario_id" name="usuario_id">
     </div>
     <div>
         <label for="saldo">Saldo Inicial</label>
