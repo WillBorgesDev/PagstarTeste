@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Usuario;
 use App\Models\Carteira;
 use App\Http\Controllers\UsuarioController;
+use App\Models\Movement;
 use Illuminate\Http\Request;
+use PhpParser\Node\Stmt\Switch_;
 
 class CarteiraController extends Controller
 {
@@ -91,15 +93,22 @@ class CarteiraController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Carteira $carteira,Request $request)
+    public function update(Carteira $carteira, Request $request)
     {
         //
         if (! $request->has('cancel') ){
 
-            $carteira->saldo = $carteira->saldo + $request->input('saldo');
-    
+            // $dados = $request->all();
+            if ($request->input('tipo') == 'deposito')
+            {
+                $carteira->saldo = $carteira->saldo + $request->input('saldo');
+            }else if($request->input('tipo') == 'saque')
+            {
+                $carteira->saldo = $carteira->saldo - $request->input('saldo');
+            }
             
             $carteira->update();
+            
             \Session::flash('message', 'Transação efetuada com sucesso!');
         }
         else
@@ -109,7 +118,10 @@ class CarteiraController extends Controller
         return redirect()->route('carteira.index'); 
 
     }
+    public function movement()
+    {
 
+    }
     /**
      * Remove the specified resource from storage.
      *

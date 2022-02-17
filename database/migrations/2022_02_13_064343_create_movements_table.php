@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('movements', function (Blueprint $table) {
             $table->id();
             $table->string('tipo');
-            $table->foreignId('carteira_id')->constrained('carteiras');
             $table->float('valor');
+            $table->foreignId('carteira_id')->constrained('carteiras');
             $table->timestamps();
         });
     }

@@ -27,7 +27,7 @@
                     <td>
                         <ul class="list-inline">
                             <li>
-                            <a href="{{route('carteira.movement', ['carteira' => $carteira])}}">Depositar</a>
+                            <a href="{{route('carteira.movement', ['carteira' => $carteira])}}">Movimentar</a>
                             </li>
                             <li>
                             <a href="{{route('carteira.delete', ['carteira' => $carteira])}}">Deletar</a>

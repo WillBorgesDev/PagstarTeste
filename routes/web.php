@@ -31,6 +31,9 @@ Route::resource('/usuario', 'UsuarioController')->except([
 Route::resource('/carteira', 'CarteiraController')->except([
     'show', 'edit'
 ]);
+Route::resource('/movement', 'MovementController')->except([
+    'show', 'edit'
+]);
 
 //Delete
 Route::get('/usuario/delete/{usuario}', function (App\Models\Usuario $usuario) {
@@ -51,6 +54,10 @@ Route::get('/usuario/edit/{usuario}', function (App\Models\Usuario $usuario) {
 Route::get('/carteira/movement/{carteira}', function (App\Models\Carteira $carteira) {
     return view('carteiras.movement', ['wallet' => $carteira]);
 })->name('carteira.movement');
+
+// Route::get('/carteira/movement/{carteira}', function (App\Models\Carteira $carteira) {
+//     return view('carteiras.movement', ['wallet' => $carteira]);
+// })->name('carteira.movement');
 
 
 

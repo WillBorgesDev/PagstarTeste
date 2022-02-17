@@ -9,9 +9,9 @@ class Movement extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'type',
-        'carteira_id',
-        'value'
+        'tipo',
+        'valor',
+        'carteira_id'
     ];
 
     public function carteira()
