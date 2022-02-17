@@ -14,8 +14,8 @@
             <input type="text" id="tipo" name="tipo" value="">
         </div>
         <div>
-            <label for="saldo">Valor</label>
-            <input type="text" id="saldo" name="saldo" value="">
+            <label for="valor">Valor</label>
+            <input type="text" id="valor" name="valor" value="">
         </div>
             <div class="form-group">
                 <input type="submit" name="save_user" value="Cofirmar deposito">

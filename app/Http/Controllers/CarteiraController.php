@@ -24,6 +24,7 @@ class CarteiraController extends Controller
 
         return view('carteiras.index', compact('carteiras'));
     }
+    
 
     /**
      * Show the form for creating a new resource.
@@ -98,14 +99,18 @@ class CarteiraController extends Controller
         //
         if (! $request->has('cancel') ){
 
-            // $dados = $request->all();
+            // 
             if ($request->input('tipo') == 'deposito')
             {
-                $carteira->saldo = $carteira->saldo + $request->input('saldo');
+                $carteira->saldo = $carteira->saldo + $request->input('valor');
             }else if($request->input('tipo') == 'saque')
             {
-                $carteira->saldo = $carteira->saldo - $request->input('saldo');
+                $carteira->saldo = $carteira->saldo - $request->input('valor');
             }
+            $dados = $request->all();
+            $dados['carteira_id'] = $carteira->id;
+
+            Movement::create($dados);
             
             $carteira->update();
             

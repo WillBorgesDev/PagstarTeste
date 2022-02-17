@@ -8,6 +8,10 @@
         <div class="col-md-8">
             <a href="{{route('carteira.create')}}" class="btn btn-primary">Criar Carteira</a>
         </div>
+        <hr>
+        <div class="col-md-8">
+            <a href="{{route('extrato.index')}}" class="btn btn-primary">Ver Movimentações</a>
+        </div>
     </div>
     <div class="row">
         <table class="table table-striped">

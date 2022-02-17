@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\CarteiraController;
+use App\Http\Controllers\ExtratoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +24,7 @@ Route::get('/usuario', [UsuarioController::class, 'index']);
 Route::post('/usuario', [UsuarioController::class, 'store']);
 Route::get('/carteira', [CarteiraController::class, 'index']);
 Route::post('/carteira', [CarteiraController::class, 'store']);
+Route::get('/extrato', [ExtratoController::class, 'index']);
 
 Route::resource('/usuario', 'UsuarioController')->except([
     'show', 'edit'
@@ -31,7 +33,7 @@ Route::resource('/usuario', 'UsuarioController')->except([
 Route::resource('/carteira', 'CarteiraController')->except([
     'show', 'edit'
 ]);
-Route::resource('/movement', 'MovementController')->except([
+Route::resource('/extrato', 'ExtratoController')->except([
     'show', 'edit'
 ]);
 
@@ -55,9 +57,12 @@ Route::get('/carteira/movement/{carteira}', function (App\Models\Carteira $carte
     return view('carteiras.movement', ['wallet' => $carteira]);
 })->name('carteira.movement');
 
-// Route::get('/carteira/movement/{carteira}', function (App\Models\Carteira $carteira) {
-//     return view('carteiras.movement', ['wallet' => $carteira]);
-// })->name('carteira.movement');
+//Historico
+
+// Route::get('/extrato/{extrato}', function (App\Models\Movement $extrato) {
+//     return view('historico.extrato', ['extrato' => $extrato]);
+// })->name('extrato.index');
+
 
 
 
