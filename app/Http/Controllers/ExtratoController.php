@@ -15,9 +15,9 @@ class ExtratoController extends Controller
     public function index()
     {
         //
-        
-        $movements = Movement::all();
-        return view('extrato.index', compact('movements') );
+
+        $movements = Movement::paginate(5);
+        return view('extrato.index', ['movements' => $movements]);
     }
 
     /**
@@ -84,5 +84,6 @@ class ExtratoController extends Controller
     public function destroy($id)
     {
         //
+        
     }
 }

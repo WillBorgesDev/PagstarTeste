@@ -42,6 +42,10 @@
             @endforeach
             </tbody>
         </table>
+        {{$carteiras->links()}}
+    </div>
+    <div class="col-md-8">
+            <a href="{{route('usuario.index')}}" class="btn btn-primary">Usuarios</a>
     </div>
 </div>
 @endsection

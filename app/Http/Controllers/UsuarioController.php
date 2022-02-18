@@ -16,8 +16,11 @@ class UsuarioController extends Controller
     public function index()
     {
         //
-        $usuarios = Usuario::all();
-        return view('usuarios.index', compact('usuarios'));
+        $usuarios = Usuario::paginate(5);
+        return view('usuarios.index', ['usuarios' => $usuarios]);
+
+        // $equipamentos = Equipamento::paginate(10);
+        // return view('equipamentos.index', ['equipamentos' => $equipamentos] );
         
     }
 

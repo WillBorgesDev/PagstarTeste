@@ -19,10 +19,9 @@ class CarteiraController extends Controller
     public function index()
     {
         
-        $carteiras = Carteira::all();
-        
 
-        return view('carteiras.index', compact('carteiras'));
+        $carteiras = Carteira::paginate(5);
+        return view('carteiras.index', ['carteiras' => $carteiras]);
     }
     
 
@@ -123,10 +122,7 @@ class CarteiraController extends Controller
         return redirect()->route('carteira.index'); 
 
     }
-    public function movement()
-    {
-
-    }
+    
     /**
      * Remove the specified resource from storage.
      *
@@ -137,6 +133,7 @@ class CarteiraController extends Controller
     {
         //
         if (! $request->has('cancel') ){
+            $carteira->movement()->delete();
             $carteira->delete();
             \Session::flash('message', 'Usuario excluído com sucesso !');
         }

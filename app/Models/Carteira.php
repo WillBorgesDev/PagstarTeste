@@ -16,6 +16,6 @@ class Carteira extends Model
     }
     public function movement()
     {
-        return $this->hasOne(Carteira::class);
+        return $this->hasOne(Movement::class);
     }
 }

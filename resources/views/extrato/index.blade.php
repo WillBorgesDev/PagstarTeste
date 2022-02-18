@@ -29,6 +29,7 @@
             @endforeach
             </tbody>
         </table>
+        {{$movements->links()}}
     </div>
     
     <div class="col-md-8">
